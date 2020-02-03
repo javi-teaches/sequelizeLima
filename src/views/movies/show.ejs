@@ -1,0 +1,17 @@
+<%- include('../partials/head', { title: movie.title })  %> 
+	<h2><%= movie.title %> </h2>
+	<ul>
+		<li>
+			<b>Rating: </b> <%= movie.rating %> <br>
+			<b>Genero: </b> <%= movie.genre_id %> <br>
+			<b>Premios: </b> <%= movie.awards %> <br>
+			<b>Estreno: </b> <%= movie.release_date.getFullYear() %> <br>
+			<b>Duración: </b> <%= movie.length ? movie.length : 'Sin data' %> <br>
+			<a href="/movies">VOLVER</a>
+			<form action="/movies/<%= movie.id %>?_method=DELETE" method="POST">
+				<h6>¿Querés eliminar esta película?</h6>
+				<button type="submit">ELIMINAR</button>
+			</form>
+		</li>
+	</ul>
+<%- include('../partials/footer')  %> 
