@@ -1,0 +1,18 @@
+<%- include('../partials/head', { title: 'Crear una película' })  %> 
+	<h2>Buscar una película</h2>
+	<form action="/movies/search" method="GET">
+		<div>
+			<label>Buscar por título:</label>
+			<input type="text" name="search">
+		</div>
+		<button type="submit">BUSCAR</button>
+		<hr>
+		<% if (results.length > 0) { %>
+			<% results.forEach(result => { %>
+			<p><%= result.title %> <a href="/movies/<%= result.id%>">Ver detalle</a> </p>
+			<% }) %>
+		<% } else { %>
+			<p>No hay resultados para mostrar</p>
+		<% } %>
+	</form>
+<%- include('../partials/footer')  %> 

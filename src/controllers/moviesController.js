@@ -1,5 +1,6 @@
 const db = require('../database/models');
 const sequelize = db.sequelize;
+const Op = db.Sequelize.Op;
 const Movies = db.movies;
 
 module.exports = {
@@ -42,5 +43,17 @@ module.exports = {
 			.create(req.body)
 			.then(() => res.redirect('/movies'))
 			.catch(error => res.send(error));
+	},
+
+	search: (req, res) => {
+		Movies.findAll({
+			where: {
+				title: {[Op.like]: `%${req.query.search}%`}
+			}
+		})
+		.then(results => {
+			res.locals.results = results;
+			return res.render('movies/search');
+		})
 	},
 }

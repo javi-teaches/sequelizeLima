@@ -7,6 +7,9 @@ const controller = require('../controllers/moviesController');
 /* Index de Películas */
 router.get('/', controller.index);
 
+/* Buscador de Películas */
+router.get('/search', controller.search);
+
 router.get('/create', controller.create);
 router.post('/create', controller.store);
 
