@@ -22,10 +22,12 @@ app.use(express.static(path.join(__dirname, '../public/')));
 app.use(method('_method'));
 
 const moviesRouter = require('./routes/moviesRoutes');
+const genresRouter = require('./routes/genresRoutes');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/movies', moviesRouter);
+app.use('/genres', genresRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

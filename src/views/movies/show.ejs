@@ -8,6 +8,7 @@
 			<b>Estreno: </b> <%= movie.release_date.getFullYear() %> <br>
 			<b>Duración: </b> <%= movie.length ? movie.length : 'Sin data' %> <br>
 			<a href="/movies">VOLVER</a>
+			<a href="/movies/<%= movie.id %>/edit">Editar datos</a>
 			<form action="/movies/<%= movie.id %>?_method=DELETE" method="POST">
 				<h6>¿Querés eliminar esta película?</h6>
 				<button type="submit">ELIMINAR</button>

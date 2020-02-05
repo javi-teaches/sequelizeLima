@@ -16,5 +16,24 @@ module.exports = (sequelize, DataTypes) => {
 		// timestamps: false
 	});
 
+	movie.prototype.getTitleAndRating  = function () {
+		return this.title + ' - ' + this.rating;
+	}
+
+	movie.associate = (models) => {
+		movie.belongsTo(models.genres, {
+			as: 'genre',
+			foreignKey: 'genre_id'
+		});
+
+		movie.belongsToMany(models.actors, {
+			as: 'actors',
+			through: 'actor_movie',
+			foreignKey: 'movie_id',
+			otherKey: 'actor_id',
+			timestamps: false
+		});
+	}
+
 	return movie;
 }

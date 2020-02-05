@@ -3,9 +3,8 @@
 	<ul>
 		<% movies.forEach(movie => { %>
 		<li>
-			<b>Título: </b> <%= movie.title %> <br>
-			<b>Rating: </b> <%= movie.rating %> <br>
-			<b>Genero: </b> <%= movie.genre_id %> <br>
+			<b>Título: </b> <%= movie.getTitleAndRating() %> <br>
+			<b>Genero: </b> <%= movie.genre ? movie.genre.name : 'Sin género' %> <br>
 			<a href="/movies/<%= movie.id %>">VER DETALLES</a>
 			<hr>
 		</li>
